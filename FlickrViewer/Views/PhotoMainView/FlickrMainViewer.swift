@@ -16,7 +16,11 @@ protocol FlickrMainViewerDelegate {
 class FlickrMainViewer: UICollectionView {
 
     private let cellName = "FlickrMainViewerCell"
-    var photos = [PhotoViewData]()
+    var photos: [PhotoViewData] = [PhotoViewData]() {
+        didSet {
+            reloadData()
+        }
+    }
 
     var flickrMainViewerDelegate: FlickrMainViewerDelegate?
     var imageSize: CGSize = CGSize(width: 0, height: 0) {

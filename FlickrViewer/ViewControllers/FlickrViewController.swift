@@ -54,10 +54,6 @@ class FlickrViewController: UIViewController {
 
         thumbnailCollectionView.photos = self.photos
         flickrMainViewer.photos = self.photos
-
-        thumbnailCollectionView.reloadData()
-        flickrMainViewer.reloadData()
-
         thumbnailCollectionView.selectPhoto(at: 0)
     }
 

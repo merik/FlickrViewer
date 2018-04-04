@@ -19,9 +19,14 @@ class ThumbnailCollectionView: UICollectionView {
     private var currentSelectingItem = -1
     private let cellSize = CGSize(width: 120, height: 80)
 
-    var photos = [PhotoViewData]()
-    var thumbnailDelegate: ThumbnailCollectionViewDelegate?
+    var photos: [PhotoViewData] = [PhotoViewData]() {
+        didSet {
+            currentSelectingItem = -1
+            reloadData()
+        }
+    }
 
+    var thumbnailDelegate: ThumbnailCollectionViewDelegate?
 
     func configLayout() {
         let layout = UICollectionViewFlowLayout()
