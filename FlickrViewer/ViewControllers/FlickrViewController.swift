@@ -37,10 +37,16 @@ class FlickrViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftItem
 
     }
+
+
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         presenter.fetchPhotos()
     }
     override func viewWillLayoutSubviews() {
+        setImageSize()
+    }
+
+    private func setImageSize() {
         let width = flickrMainViewer.bounds.width
         let height = flickrMainViewer.bounds.height
         flickrMainViewer.imageSize = CGSize(width: width, height: height)
@@ -55,6 +61,14 @@ class FlickrViewController: UIViewController {
         thumbnailCollectionView.photos = self.photos
         flickrMainViewer.photos = self.photos
         thumbnailCollectionView.selectPhoto(at: 0)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        DispatchQueue.main.async {
+            self.setImageSize()
+            self.thumbnailCollectionView.refreshPhoto()
+        }
+
     }
 
 }
@@ -84,6 +98,12 @@ extension FlickrViewController: FlickrPhotoView {
 
     func startLoading() {
         /// TODO: show loading progress
+    }
+}
+
+extension UINavigationController {
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.all
     }
 }
 

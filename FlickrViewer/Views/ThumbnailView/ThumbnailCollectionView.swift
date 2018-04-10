@@ -49,13 +49,18 @@ class ThumbnailCollectionView: UICollectionView {
         self.delegate = self
         configLayout()
     }
-
+    func refreshPhoto() {
+        if currentSelectingItem < 0 {
+            currentSelectingItem = 0
+        }
+        selectPhoto(at: currentSelectingItem, forced: true)
+    }
     private func itemToIndexPath(item: Int) -> IndexPath {
         return IndexPath(item: item, section: 0)
     }
 
-    func selectPhoto(at index: Int) {
-        guard index < photos.count, index >= 0, index != currentSelectingItem else {
+    func selectPhoto(at index: Int, forced: Bool = false) {
+        guard index < photos.count, index >= 0, ((index != currentSelectingItem) || forced) else {
             return
         }
         let lastSelected = currentSelectingItem
@@ -63,8 +68,12 @@ class ThumbnailCollectionView: UICollectionView {
         let currentIndexPath = itemToIndexPath(item: currentSelectingItem)
 
         if lastSelected >= 0 {
-            let lastIndexPath = itemToIndexPath(item: lastSelected)
-            self.reloadItems(at: [lastIndexPath, currentIndexPath])
+            if lastSelected != currentSelectingItem {
+                let lastIndexPath = itemToIndexPath(item: lastSelected)
+                self.reloadItems(at: [lastIndexPath, currentIndexPath])
+            } else {
+                self.reloadItems(at: [currentIndexPath])
+            }
         } else {
             self.reloadItems(at: [currentIndexPath])
         }

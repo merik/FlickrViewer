@@ -29,6 +29,7 @@ class FlickrMainViewer: UICollectionView {
                 return
             }
             flowLayout.itemSize = imageSize
+            flowLayout.invalidateLayout()
         }
     }
 
