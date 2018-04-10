@@ -22,16 +22,29 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-kp-OhV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="360"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Lq-1iz">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAT-7A-GNE">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="360"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoD-Lq-1iz">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="360"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FoD-Lq-1iz" firstAttribute="top" secondItem="rAT-7A-GNE" secondAttribute="top" id="IKV-6g-dbL"/>
+                                    <constraint firstAttribute="bottom" secondItem="FoD-Lq-1iz" secondAttribute="bottom" id="dBO-Iu-G5b"/>
+                                    <constraint firstItem="FoD-Lq-1iz" firstAttribute="leading" secondItem="rAT-7A-GNE" secondAttribute="leading" id="dYK-tS-Y6U"/>
+                                    <constraint firstAttribute="trailing" secondItem="FoD-Lq-1iz" secondAttribute="trailing" id="igh-jU-kp3"/>
+                                    <constraint firstItem="FoD-Lq-1iz" firstAttribute="centerY" secondItem="rAT-7A-GNE" secondAttribute="centerY" id="paT-Fs-4Bg"/>
+                                    <constraint firstItem="FoD-Lq-1iz" firstAttribute="centerX" secondItem="rAT-7A-GNE" secondAttribute="centerX" id="z7O-fh-bXJ"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FoD-Lq-1iz" firstAttribute="top" secondItem="DEP-kp-OhV" secondAttribute="top" id="FIE-3f-GPE"/>
-                            <constraint firstItem="FoD-Lq-1iz" firstAttribute="leading" secondItem="DEP-kp-OhV" secondAttribute="leading" id="LGV-Lb-pWo"/>
-                            <constraint firstAttribute="bottom" secondItem="FoD-Lq-1iz" secondAttribute="bottom" id="RJ9-wz-vDq"/>
-                            <constraint firstAttribute="trailing" secondItem="FoD-Lq-1iz" secondAttribute="trailing" id="UiX-OQ-nWt"/>
+                            <constraint firstItem="rAT-7A-GNE" firstAttribute="leading" secondItem="DEP-kp-OhV" secondAttribute="leading" id="7Td-GP-NIi"/>
+                            <constraint firstItem="rAT-7A-GNE" firstAttribute="top" secondItem="DEP-kp-OhV" secondAttribute="top" id="Gjs-Mz-mf7"/>
+                            <constraint firstAttribute="bottom" secondItem="rAT-7A-GNE" secondAttribute="bottom" id="JnN-c0-eEK"/>
+                            <constraint firstAttribute="trailing" secondItem="rAT-7A-GNE" secondAttribute="trailing" id="eHu-I4-8d5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -46,6 +59,7 @@
             <size key="customSize" width="393" height="360"/>
             <connections>
                 <outlet property="photoImageView" destination="FoD-Lq-1iz" id="TXR-69-aYQ"/>
+                <outlet property="scrollView" destination="rAT-7A-GNE" id="ZhJ-6e-xMD"/>
             </connections>
             <point key="canvasLocation" x="210.5" y="248"/>
         </collectionViewCell>
