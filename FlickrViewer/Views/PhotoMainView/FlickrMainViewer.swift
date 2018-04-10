@@ -55,7 +55,10 @@ class FlickrMainViewer: UICollectionView {
 
     func showPhoto(at index: Int) {
         let indexPath = IndexPath(item: index, section: 0)
-        self.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        UIView.animate(withDuration: 0.2, animations: {
+            self.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+        })
+
     }
 
 
