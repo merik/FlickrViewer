@@ -81,13 +81,18 @@ class ThumbnailCollectionView: UICollectionView {
             delegate.ThumbnailCollectionView(self, didSelectItem: photos[index], at: currentIndexPath)
         }
         if !isCellFullyVisible(indexPath: currentIndexPath) {
-            self.scrollToItem(at: currentIndexPath, at: .right, animated: true)
+            if lastSelected > currentSelectingItem {
+                self.scrollToItem(at: currentIndexPath, at: .left, animated: true)
+            } else {
+                self.scrollToItem(at: currentIndexPath, at: .right, animated: true)
+            }
         }
         
     }
     func isCellFullyVisible(indexPath: IndexPath) -> Bool {
         if let attributes = self.layoutAttributesForItem(at: indexPath) {
-            return self.frame.contains(attributes.frame)
+            let rect = self.convert(attributes.frame, to: self.superview)
+            return self.frame.contains(rect)
         }
         return false
 
