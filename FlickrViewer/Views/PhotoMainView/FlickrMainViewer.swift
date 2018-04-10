@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FlickrMainViewerDelegate {
-    func FlickrMainViewer(_ collectionView: FlickrMainViewer, didScrollTo indexPath: IndexPath)
+    func FlickrMainViewer(_ collectionView: FlickrMainViewer, didScrollTo indexPath: IndexPath, forced: Bool)
 
 }
 
@@ -66,7 +66,7 @@ class FlickrMainViewer: UICollectionView {
 extension FlickrMainViewer: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let delegate = self.flickrMainViewerDelegate {
-            delegate.FlickrMainViewer(self, didScrollTo: indexPath)
+            delegate.FlickrMainViewer(self, didScrollTo: indexPath, forced: false)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,7 +82,7 @@ extension FlickrMainViewer: UICollectionViewDelegate, UICollectionViewDataSource
         if self.visibleCells.count > 0 {
             if let indexPath = getCurrentCellIndexPath() {
                 if let delegate = self.flickrMainViewerDelegate {
-                    delegate.FlickrMainViewer(self, didScrollTo: indexPath)
+                    delegate.FlickrMainViewer(self, didScrollTo: indexPath, forced: self.visibleCells.count > 1)
                 }
             }
         }
@@ -103,7 +103,7 @@ extension FlickrMainViewer: UICollectionViewDelegate, UICollectionViewDataSource
         if self.visibleCells.count > 0 {
             if let indexPath = getCurrentCellIndexPath() { 
                 if let delegate = self.flickrMainViewerDelegate {
-                    delegate.FlickrMainViewer(self, didScrollTo: indexPath)
+                    delegate.FlickrMainViewer(self, didScrollTo: indexPath, forced: self.visibleCells.count > 1)
                 }
             }
         }

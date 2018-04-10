@@ -80,8 +80,8 @@ extension FlickrViewController: ThumbnailCollectionViewDelegate {
 
 extension FlickrViewController: FlickrMainViewerDelegate {
 
-    func FlickrMainViewer(_ collectionView: FlickrMainViewer, didScrollTo indexPath: IndexPath) {
-        thumbnailCollectionView.selectPhoto(at: indexPath.item)
+    func FlickrMainViewer(_ collectionView: FlickrMainViewer, didScrollTo indexPath: IndexPath, forced: Bool) {
+        thumbnailCollectionView.selectPhoto(at: indexPath.item, forced: forced)
     }
 }
 
