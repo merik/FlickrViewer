@@ -9,7 +9,7 @@
 import Foundation
 
 struct Contants {
-    static var navigationBarColor = "#FF2D55"
+    static var navigationBarColor = "#EA827F"
     static var navigationBarTintColor = "#FFFFFF"
     static var selectionColor = "#EB4B98"
 }
