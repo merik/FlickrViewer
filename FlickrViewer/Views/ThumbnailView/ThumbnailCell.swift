@@ -35,7 +35,7 @@ class ThumbnailCell: UICollectionViewCell {
     }
     func selectMe() {
 
-        thumbnailImageView.layer.borderColor = UIColor.red.cgColor
+        thumbnailImageView.layer.borderColor = UIColor.init(hex: Contants.selectionColor).cgColor //UIColor.red.cgColor
         thumbnailImageView.layer.borderWidth = 2
     }
     func deselectMe() {
